@@ -19,6 +19,8 @@
           run: npm ci
 
         - name: Run deploy script
-          run: |
-            git config user.name "Nathan Wuiske" && git config user.email "wuiske.nathan@gmail.com"
-            npm run build
+          run: git config user.name "Nathan Wuiske" && git config user.email "wuiske.nathan@gmail.com"
+
+        - name: CA
+          run: npm run build
+            
