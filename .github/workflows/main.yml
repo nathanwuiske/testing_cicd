@@ -40,6 +40,6 @@ jobs:
           SRC_FOLDER: dist
           DEST_OWNER: nathanwuiske
           DEST_REPO: docs
-          DEST_BRANCH: master
+          DEST_BRANCH: main
           DEST_FOLDER: prod
           DEST_PREDEPLOY_CLEANUP: "rm bundle* && rm index.html"
