@@ -34,5 +34,5 @@ jobs:
         run: npm run build
         
       - name: ES lint checks
-        run: npm run lint
+        run: npx eslint src --ext .vue
         
