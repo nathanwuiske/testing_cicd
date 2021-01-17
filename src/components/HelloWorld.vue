@@ -10,17 +10,19 @@
     </p>
     <button v-on:click="test()">sss</button>
 
-    <input v-model="someinput" type="text" />
+    <input v-model="someinput" type="text">
 
-    <span>{{ storeNum }}</span>
+    <span>{{storeNum}}</span>
 
     <div v-if="error">
-      <b-alert variant="danger" show>
-        {{ errorMessage }}
-      </b-alert>
-    </div>
+   
+       <b-alert variant="danger" show>
+      {{ errorMessage}} 
+    </b-alert>
+      
+      </div>
 
-    <div v-if="loading"><b-spinner label="Loading..."></b-spinner> Loading</div>
+    <div v-if="loading"> <b-spinner label="Loading..."></b-spinner>  Loading  </div>
     <ul>
       <li v-for="post in posts" :key="post.id">
         {{ post.title }}
@@ -33,11 +35,12 @@
 import axios from 'axios';
 
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
-    msg: String,
+    msg: String
   },
-  data() {
+  data()
+  {
     return {
       posts: [],
       loading: false,
@@ -45,58 +48,64 @@ export default {
       errorMessage: '',
       storeNum: 0,
       someinput: '',
-    };
+    }
   },
   computed: {
-    billingValue() {
+    billingValue()
+    {
       return this.$store.getters.getbillingValue;
-    },
+    }
   },
   methods: {
-    helloWorld() {
+    helloWorld()
+    {
       this.loading = true;
       setTimeout(() => {
-        axios
-          .get('https://jsonplaceholder.typicode.com/posts')
-          .then((response) => {
-            this.posts = response.data;
-            this.loading = false;
-          })
-          .catch((error) => {
-            console.log(error);
-            this.loading = false;
-            this.error = true;
-            this.errorMessage = error;
-          });
+   axios.get('https://jsonplaceholder.typicode.com/posts').then(response =>
+      {
+        this.posts = response.data;
+        this.loading = false;
+
+      }).catch(error => {
+        console.log(error);
+         this.loading = false;
+         this.error = true;
+         this.errorMessage = error;
+      })
       }, 3000);
+   
     },
-    async test() {
-      await axios.put('http://127.0.0.1:8000/api/settings', {
+    async test()
+    {
+       await axios.put('http://127.0.0.1:8000/api/settings', {
         id: '1',
-        billingtype: this.someinput,
+        billingtype: this.someinput
       });
-      this.$store.dispatch('setBilling');
+      this.$store.dispatch("setBilling");
 
-      setTimeout(() => {
-        this.storeNum = this.$store.getters.getbillingValue;
+    setTimeout(() => {
+      this.storeNum = this.$store.getters.getbillingValue;
 
-        console.log(this.storeNum);
-      }, 1000);
-    },
-  },
-  created() {},
-  mounted() {
-    function a_b() {
+      console.log(this.storeNum)
+    }, 1000)
 
+      
     }
-    const aa = 'ss';
-    const b = '';
-    const n = new String('g' + 'f');
-    console.log(a);
-
+  },
+  created()
+  {
+   
+   
+     
+  },
+  mounted()
+  {
+   
+    
     // this.helloWorld();
     // this.$store.dispatch("setBillingValue");
-  },
+   
+  }
 };
 </script>
 
